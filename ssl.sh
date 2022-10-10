@@ -1,5 +1,5 @@
 #A script which helps to automates ssl certificate on a website {at no cost}.
-#
+#Preresiquetes - existing domain name
 
 clear
 echo "Would you like to install cert-bot and & create secure website?"
