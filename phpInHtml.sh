@@ -1,0 +1,31 @@
+clear
+printf """
+this script intention to remove .php, .html, .htm extensions with .htaccess
+please run it with sudo permission
+it will edit apache configuration edit file by adding 
+
+'<Directory /var/www/your_domain>
+  Options Indexes FollowSymLinks MultiViews
+  AllowOverride All
+  Order allow,deny
+  allow from all
+</Directory>'
+"""
+read -p "Please press [Enter] for defaults or type domain name without www or http.. " x
+if [[ $x != '' ]]
+then
+  sed -i '11i\	<Directory /var/www/html>' /etc/apache2/sites-available/000-default*
+  sed -i '12i\		Options Indexes FollowSymLinks MultiViews' /etc/apache2/sites-available/000-default*
+  sed -i '13i\		AllowOverride All' /etc/apache2/sites-available/000-default*
+  sed -i '14i\		Order allow,deny' /etc/apache2/sites-available/000-default*
+  sed -i '15i\		allow from all' /etc/apache2/sites-available/000-default*
+  sed -i '16i\	</Directory>' /etc/apache2/sites-available/000-default*
+else
+  sed -i '11i\	<Directory /var/www/html>' /etc/apache2/sites-available/${x}
+  sed -i '12i\		Options Indexes FollowSymLinks MultiViews' /etc/apache2/sites-available/${x}
+  sed -i '13i\		AllowOverride All' /etc/apache2/sites-available/${x}
+  sed -i '14i\		Order allow,deny' /etc/apache2/sites-available/${x}
+  sed -i '15i\		allow from all' /etc/apache2/sites-available/${x}
+  sed -i '16i\	</Directory>' /etc/apache2/sites-available/${x}
+fi
+clear
