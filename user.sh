@@ -58,4 +58,12 @@ then
 fi
 read -p "Please press [enter] to continue... " y
 clear
+
+echo "Would you like to disable sudo password?"
+read -p "Please press [Enter] to continue or [n] for not: " x
+if [[ $x = '' ]]
+then
+  sudo sed -i '28i\$userx ALL=(ALL) NOPASSWD: ALL' /etc/sudoers
+fi
+
 #######################################################################
