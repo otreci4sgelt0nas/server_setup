@@ -51,7 +51,7 @@ read -p "Please press [Enter] for santasHelper or please specify the username...
 if [[ $x = '' ]]
 then 
   sed -i 's/ChallengeResponseAuthentication[[:space:]]yes/ChallengeResponseAuthentication no/g' /etc/ssh/sshd_config
-  sed -i 's/PasswordAuthentication[[:space:]]yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
+  sed -i '3i\PasswordAuthentication no' /etc/ssh/sshd_config
   sed -i 's/UsePAM[[:space:]]yes/UsePAM no/g' /etc/ssh/sshd_config
   sed -i 's/PermitRootLogin[[:space:]]yes/PermitRootLogin no/g' /etc/ssh/sshd_config
   /etc/init.d/ssh reload
