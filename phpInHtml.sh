@@ -32,8 +32,8 @@ clear
 
 read -p "Please press [Enter] to add pre-configured .htaccess to to /var/www/html and to test out if it works by adding phpinfo() function to index.html file" x
 if [[ $x != '' ]]
-  sudo rm /var/www/html/index.html && sudo touch /var/www/html/index.html
-  sudo echo -e "<?php\\nphpinfo();\\n?>" > /var/www/html/index.html
-  sudo echo -e "RewriteEngine On\\nAddType application/x-httpd-php .html" > /var/www/html/.htaccess
-  sudo /etc/init.d/apache2 restart
+  rm /var/www/html/index.html && sudo touch /var/www/html/index.html
+  echo -e "<?php\\nphpinfo();\\n?>" > /var/www/html/index.html
+  echo -e "RewriteEngine On\\nAddType application/x-httpd-php .html" > /var/www/html/.htaccess
+  /etc/init.d/apache2 restart
 fi
